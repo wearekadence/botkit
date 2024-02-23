@@ -228,7 +228,7 @@ export class Botkit {
      * _deps contains a list of all dependencies that Botkit must load before being ready to operate.
      * see addDep(), completeDep() and ready()
      */
-    private _deps: {};
+    private _deps: object;
 
     /**
      * contains an array of functions that will fire when Botkit has completely booted.
@@ -261,7 +261,7 @@ export class Botkit {
         send: new Ware(),
         receive: new Ware(),
         interpret: new Ware()
-    }
+    };
 
     /**
      * A list of all the installed plugins.
@@ -931,8 +931,8 @@ export class Botkit {
                 }
 
                 const trigger = {
-                    pattern: pattern,
-                    handler: handler,
+                    pattern,
+                    handler,
                     type: null
                 };
 
@@ -985,8 +985,8 @@ export class Botkit {
                 }
 
                 const trigger = {
-                    pattern: pattern,
-                    handler: handler,
+                    pattern,
+                    handler,
                     type: null
                 };
 

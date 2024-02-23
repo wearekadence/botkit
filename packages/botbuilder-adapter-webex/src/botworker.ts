@@ -37,7 +37,7 @@ export class WebexBotWorker extends BotWorker {
             conversation: { id: 'temporary-value' }, // TODO: this is fake
             channelId: 'webex'
         });
-    };
+    }
 
     /**
      * Switch a bot's context into a different room.
@@ -123,7 +123,7 @@ export class WebexBotWorker extends BotWorker {
             conversation: {
                 id: roomId,
                 // @ts-ignore this field is required for webex
-                parentId: parentId
+                parentId
             },
             user: { id: userId, name: null },
             channelId: 'webex'

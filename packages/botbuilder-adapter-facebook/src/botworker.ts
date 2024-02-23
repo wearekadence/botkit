@@ -8,6 +8,7 @@
 
 import { Botkit, BotWorker } from 'botkit';
 import { FacebookAPI } from './facebook_api';
+import { ConversationAccount, ConversationReference } from 'botbuilder';
 
 /**
  * This is a specialized version of [Botkit's core BotWorker class](core.md#BotWorker) that includes additional methods for interacting with Facebook.
@@ -70,11 +71,9 @@ export class FacebookBotWorker extends BotWorker {
     public async startConversationWithUser(userId): Promise<void> {
         await this.changeContext({
             channelId: 'facebook',
-            // @ts-ignore
             conversation: { id: userId },
             bot: this.getConfig('activity').recipient,
-            // @ts-ignore
             user: { id: userId }
-        });
+        } as Partial<ConversationReference>);
     }
 }

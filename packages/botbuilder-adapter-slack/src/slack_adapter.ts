@@ -14,6 +14,82 @@ import * as Debug from 'debug';
 const debug = Debug('botkit:slack');
 
 /**
+ * This interface defines the options that can be passed into the SlackAdapter constructor function.
+ */
+export interface SlackAdapterOptions {
+    /**
+     * Legacy method for validating the origin of incoming webhooks. Prefer `clientSigningSecret` instead.
+     */
+    verificationToken?: string;
+    /**
+     * A token used to validate that incoming webhooks originated with Slack.
+     */
+    clientSigningSecret?: string;
+    /**
+     * A token (provided by Slack) for a bot to work on a single workspace
+     */
+    botToken?: string;
+
+    /**
+     * The oauth client id provided by Slack for multi-team apps
+     */
+    clientId?: string;
+    /**
+     * The oauth client secret provided by Slack for multi-team apps
+     */
+    clientSecret?: string;
+    /**
+     * A array of scope names that are being requested during the oauth process. Must match the scopes defined at api.slack.com
+     */
+    scopes?: string[];
+    /**
+     * Which version of Slack's oauth protocol to use, v1 or v2. Defaults to v1.
+     */
+    oauthVersion?: string;
+    /**
+     * The URL users will be redirected to after an oauth flow. In most cases, should be `https://<mydomain.com>/install/auth`
+     */
+    redirectUri?: string;
+
+    /**
+     * A method that receives a Slack team id and returns the bot token associated with that team. Required for multi-team apps.
+     */
+    getTokenForTeam?: (teamId: string) => Promise<string>;
+
+    /**
+     * A method that receives a Slack team id and returns the bot user id associated with that team. Required for multi-team apps.
+     */
+    getBotUserByTeam?: (teamId: string) => Promise<string>;
+
+    /**
+     * Allow the adapter to startup without a complete configuration.
+     * This is risky as it may result in a non-functioning or insecure adapter.
+     * This should only be used when getting started.
+     */
+    enable_incomplete?: boolean;
+}
+
+// These interfaces are necessary to cast result of web api calls
+// See: http://slackapi.github.io/node-slack-sdk/typescript
+interface ChatPostMessageResult extends WebAPICallResult {
+    channel: string;
+    ts: string;
+    message: {
+        text: string;
+    };
+}
+
+// These interfaces are necessary to cast result of web api calls
+// See: http://slackapi.github.io/node-slack-sdk/typescript
+interface AuthTestResult extends WebAPICallResult {
+    user: string;
+    team: string;
+    team_id: string;
+    user_id: string;
+    ok: boolean;
+}
+
+/**
  * Connect [Botkit](https://www.npmjs.com/package/botkit) or [BotBuilder](https://www.npmjs.com/package/botbuilder) to Slack.
  */
 export class SlackAdapter extends BotAdapter {
@@ -291,7 +367,7 @@ export class SlackAdapter extends BotAdapter {
     public async validateOauthCode(code: string): Promise<any> {
         const slack = new WebClient();
         const details = {
-            code: code,
+            code,
             client_id: this.options.clientId,
             client_secret: this.options.clientSecret,
             redirect_uri: this.options.redirectUri
@@ -325,7 +401,7 @@ export class SlackAdapter extends BotAdapter {
             attachments: activity.attachments,
 
             channel: channelId,
-            thread_ts: thread_ts
+            thread_ts
         };
 
         // if channelData is specified, overwrite any fields in message object
@@ -523,8 +599,10 @@ export class SlackAdapter extends BotAdapter {
         }
 
         if (!await this.verifySignature(req, res)) {
+            return;
+        }
 
-        } else if (event.payload) {
+        if (event.payload) {
             // handle interactive_message callbacks and block_actions
 
             event = JSON.parse(event.payload);
@@ -720,80 +798,4 @@ export class SlackAdapter extends BotAdapter {
             console.error('Unknown Slack event type: ', event);
         }
     }
-}
-
-/**
- * This interface defines the options that can be passed into the SlackAdapter constructor function.
- */
-export interface SlackAdapterOptions {
-    /**
-     * Legacy method for validating the origin of incoming webhooks. Prefer `clientSigningSecret` instead.
-     */
-    verificationToken?: string;
-    /**
-     * A token used to validate that incoming webhooks originated with Slack.
-     */
-    clientSigningSecret?: string;
-    /**
-     * A token (provided by Slack) for a bot to work on a single workspace
-     */
-    botToken?: string;
-
-    /**
-     * The oauth client id provided by Slack for multi-team apps
-     */
-    clientId?: string;
-    /**
-     * The oauth client secret provided by Slack for multi-team apps
-     */
-    clientSecret?: string;
-    /**
-     * A array of scope names that are being requested during the oauth process. Must match the scopes defined at api.slack.com
-     */
-    scopes?: string[];
-    /**
-     * Which version of Slack's oauth protocol to use, v1 or v2. Defaults to v1.
-     */
-    oauthVersion?: string;
-    /**
-     * The URL users will be redirected to after an oauth flow. In most cases, should be `https://<mydomain.com>/install/auth`
-     */
-    redirectUri?: string;
-
-    /**
-     * A method that receives a Slack team id and returns the bot token associated with that team. Required for multi-team apps.
-     */
-    getTokenForTeam?: (teamId: string) => Promise<string>;
-
-    /**
-     * A method that receives a Slack team id and returns the bot user id associated with that team. Required for multi-team apps.
-     */
-    getBotUserByTeam?: (teamId: string) => Promise<string>;
-
-    /**
-     * Allow the adapter to startup without a complete configuration.
-     * This is risky as it may result in a non-functioning or insecure adapter.
-     * This should only be used when getting started.
-     */
-    enable_incomplete?: boolean;
-};
-
-// These interfaces are necessary to cast result of web api calls
-// See: http://slackapi.github.io/node-slack-sdk/typescript
-interface ChatPostMessageResult extends WebAPICallResult {
-    channel: string;
-    ts: string;
-    message: {
-        text: string;
-    };
-}
-
-// These interfaces are necessary to cast result of web api calls
-// See: http://slackapi.github.io/node-slack-sdk/typescript
-interface AuthTestResult extends WebAPICallResult {
-    user: string;
-    team: string;
-    team_id: string;
-    user_id: string;
-    ok: boolean;
 }

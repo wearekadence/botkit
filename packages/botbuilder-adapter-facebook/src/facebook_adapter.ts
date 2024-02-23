@@ -6,12 +6,54 @@
  * Licensed under the MIT License.
  */
 
-import { Activity, ActivityTypes, BotAdapter, TurnContext, ConversationReference, ResourceResponse } from 'botbuilder';
+import { Activity, ActivityTypes, BotAdapter, TurnContext, ConversationReference, ResourceResponse, ConversationAccount } from 'botbuilder';
 import * as Debug from 'debug';
 import { FacebookBotWorker } from './botworker';
 import { FacebookAPI } from './facebook_api';
 import * as crypto from 'crypto';
+
 const debug = Debug('botkit:facebook');
+
+/**
+ * This interface defines the options that can be passed into the FacebookAdapter constructor function.
+ */
+export interface FacebookAdapterOptions {
+    /**
+     * Alternate root url used to contruct calls to Facebook's API.  Defaults to 'graph.facebook.com' but can be changed (for mocking, proxy, etc).
+     */
+    api_host?: string;
+    /**
+     * Alternate API version used to construct calls to Facebook's API. Defaults to v3.2
+     */
+    api_version?: string;
+
+    /**
+     * The "verify token" used to initially create and verify the Webhooks subscription settings on Facebook's developer portal.
+     */
+    verify_token: string;
+
+    /**
+     * The "app secret" from the "basic settings" page from your app's configuration in the Facebook developer portal
+     */
+    app_secret: string;
+
+    /**
+     * When bound to a single page, use `access_token` to specify the "page access token" provided in the Facebook developer portal's "Access Tokens" widget of the "Messenger Settings" page.
+     */
+    access_token?: string;
+
+    /**
+     * When bound to multiple teams, provide a function that, given a page id, will return the page access token for that page.
+     */
+    getAccessTokenForPage?: (pageId: string) => Promise<string>;
+
+    /**
+     * Allow the adapter to startup without a complete configuration.
+     * This is risky as it may result in a non-functioning or insecure adapter.
+     * This should only be used when getting started.
+     */
+    enable_incomplete?: boolean;
+}
 
 /**
  * Connect [Botkit](https://www.npmjs.com/package/botkit) or [BotBuilder](https://www.npmjs.com/package/botbuilder) to Facebook Messenger.
@@ -387,10 +429,9 @@ export class FacebookAdapter extends BotAdapter {
             message.sender = { id: message.optin.user_ref };
         }
 
-        const activity: Activity = {
+        const activity: Partial<Activity> = {
             channelId: 'facebook',
             timestamp: new Date(),
-            // @ts-ignore ignore missing optional fields
             conversation: {
                 id: message.sender.id
             },
@@ -405,7 +446,7 @@ export class FacebookAdapter extends BotAdapter {
             channelData: message,
             type: ActivityTypes.Event,
             text: null
-        };
+        } as Partial<Activity>;
 
         if (message.message) {
             activity.type = ActivityTypes.Message;
@@ -445,45 +486,4 @@ export class FacebookAdapter extends BotAdapter {
             return true;
         }
     }
-}
-
-/**
- * This interface defines the options that can be passed into the FacebookAdapter constructor function.
- */
-export interface FacebookAdapterOptions {
-    /**
-     * Alternate root url used to contruct calls to Facebook's API.  Defaults to 'graph.facebook.com' but can be changed (for mocking, proxy, etc).
-     */
-    api_host?: string;
-    /**
-     * Alternate API version used to construct calls to Facebook's API. Defaults to v3.2
-     */
-    api_version?: string;
-
-    /**
-     * The "verify token" used to initially create and verify the Webhooks subscription settings on Facebook's developer portal.
-     */
-    verify_token: string;
-
-    /**
-     * The "app secret" from the "basic settings" page from your app's configuration in the Facebook developer portal
-     */
-    app_secret: string;
-
-    /**
-     * When bound to a single page, use `access_token` to specify the "page access token" provided in the Facebook developer portal's "Access Tokens" widget of the "Messenger Settings" page.
-     */
-    access_token?: string;
-
-    /**
-     * When bound to multiple teams, provide a function that, given a page id, will return the page access token for that page.
-     */
-    getAccessTokenForPage?: (pageId: string) => Promise<string>;
-
-    /**
-     * Allow the adapter to startup without a complete configuration.
-     * This is risky as it may result in a non-functioning or insecure adapter.
-     * This should only be used when getting started.
-     */
-    enable_incomplete?: boolean;
 }

@@ -247,7 +247,7 @@ export class WebexAdapter extends BotAdapter {
                 resolve();
             });
         });
-    };
+    }
 
     /**
      * Register a webhook subscription with Webex Teams to start receiving message events.

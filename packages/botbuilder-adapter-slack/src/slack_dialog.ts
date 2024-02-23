@@ -29,8 +29,8 @@ export class SlackDialog {
      */
     public constructor(title?: string, callback_id?: string, submit_label?: string, elements?: any) {
         this.data = {
-            title: title,
-            callback_id: callback_id,
+            title,
+            callback_id,
             submit_label: submit_label || null,
             elements: elements || []
         };
@@ -92,13 +92,15 @@ export class SlackDialog {
      * @param subtype
      */
     public addText(label: string | any, name: string, value: string, options: string | any, subtype?: string): SlackDialog {
-        const element = (typeof (label) === 'object') ? label : {
-            label: label,
-            name: name,
-            value: value,
-            type: 'text',
-            subtype: subtype || null
-        };
+        const element = (typeof (label) === 'object')
+            ? label
+            : {
+                label,
+                name,
+                value,
+                type: 'text',
+                subtype: subtype || null
+            };
 
         if (typeof (options) === 'object') {
             for (const key in options) {
@@ -163,13 +165,15 @@ export class SlackDialog {
      * @param subtype
      */
     public addTextarea(label: string, name: string, value: string, options: any, subtype: string): SlackDialog {
-        const element = (typeof (label) === 'object') ? label : {
-            label: label,
-            name: name,
-            value: value,
-            type: 'textarea',
-            subtype: subtype || null
-        };
+        const element = (typeof (label) === 'object')
+            ? label
+            : {
+                label,
+                name,
+                value,
+                type: 'textarea',
+                subtype: subtype || null
+            };
 
         if (typeof (options) === 'object') {
             for (const key in options) {
@@ -191,9 +195,9 @@ export class SlackDialog {
      */
     public addSelect(label: string, name: string, value: string | number | Record<string, any> | null, option_list: { label: string; value: string | number | Record<string, any> | null }[], options?: any): SlackDialog {
         const element = {
-            label: label,
-            name: name,
-            value: value,
+            label,
+            name,
+            value,
             options: option_list,
             type: 'select'
         };

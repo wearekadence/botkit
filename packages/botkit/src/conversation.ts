@@ -93,6 +93,7 @@ export interface BotkitConversationStep {
     next: (stepResult) => Promise<any>;
 }
 
+interface EmptyObject {}
 /**
  * An extension on the [BotBuilder Dialog Class](https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/dialog?view=botbuilder-ts-latest) that provides a Botkit-friendly interface for
  * defining and interacting with multi-message dialogs. Dialogs can be constructed using `say()`, `ask()` and other helper methods.
@@ -112,16 +113,16 @@ export interface BotkitConversationStep {
  * })
  * ```
  */
-export class BotkitConversation<O extends object = {}> extends Dialog<O> {
+export class BotkitConversation<O extends EmptyObject = {}> extends Dialog<O> {
     /**
      * A map of every message in the dialog, broken into threads
      */
     public script: any; // TODO: define this with typedefs
 
     private _prompt: string;
-    private _beforeHooks: {};
+    private _beforeHooks: object;
     private _afterHooks: { (context: TurnContext, results: any): void }[];
-    private _changeHooks: {};
+    private _changeHooks: object;
     private _controller: Botkit;
 
     /**
@@ -195,7 +196,7 @@ export class BotkitConversation<O extends object = {}> extends Dialog<O> {
      * @param thread_name The name of the thread to which this action is added.  Defaults to `default`
      */
     public addAction(action: string, thread_name = 'default'): BotkitConversation {
-        this.addMessage({ action: action }, thread_name);
+        this.addMessage({ action }, thread_name);
         return this;
     }
 
@@ -723,12 +724,12 @@ export class BotkitConversation<O extends object = {}> extends Dialog<O> {
         // Create step context
         const nextCalled = false;
         const step = {
-            index: index,
+            index,
             threadLength: this.script[thread_name].length,
             thread: thread_name,
-            state: state,
+            state,
             options: state.options,
-            reason: reason,
+            reason,
             result: result && result.text ? result.text : result,
             resultObject: result,
             values: state.values,
@@ -868,7 +869,7 @@ export class BotkitConversation<O extends object = {}> extends Dialog<O> {
         /*******************************************************************************************************************/
         // Handle template token replacements
         if (outgoing.text) {
-            outgoing.text = mustache.render(outgoing.text, { vars: vars });
+            outgoing.text = mustache.render(outgoing.text, { vars });
         }
 
         // process templates in native botframework attachments and/or slack attachments
@@ -922,7 +923,7 @@ export class BotkitConversation<O extends object = {}> extends Dialog<O> {
             for (let a = 0; a < attachments.length; a++) {
                 for (const key in attachments[a]) {
                     if (typeof (attachments[a][key]) === 'string') {
-                        attachments[a][key] = mustache.render(attachments[a][key], { vars: vars });
+                        attachments[a][key] = mustache.render(attachments[a][key], { vars });
                     } else {
                         attachments[a][key] = this.parseTemplatesRecursive(attachments[a][key], vars);
                     }
@@ -931,7 +932,7 @@ export class BotkitConversation<O extends object = {}> extends Dialog<O> {
         } else {
             for (const x in attachments) {
                 if (typeof (attachments[x]) === 'string') {
-                    attachments[x] = mustache.render(attachments[x], { vars: vars });
+                    attachments[x] = mustache.render(attachments[x], { vars });
                 } else {
                     attachments[x] = this.parseTemplatesRecursive(attachments[x], vars);
                 }
