@@ -1,5 +1,5 @@
 {
-  "name": "botkit",
+  "name": "@wearekadence/botkit",
   "version": "4.16.0-alpha.0",
   "description": "Building Blocks for Building Bots",
   "main": "lib/index.js",

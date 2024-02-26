@@ -1,5 +1,5 @@
 {
-  "name": "testbot",
+  "name": "@wearekadence/testbot",
   "version": "1.1.0-alpha.0",
   "description": "a test harness for testing in-progress changes to botkit",
   "main": "bot.js",

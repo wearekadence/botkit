@@ -1,5 +1,5 @@
 {
-  "name": "botbuilder-adapter-webex",
+  "name": "@wearekadence/botbuilder-adapter-webex",
   "version": "1.1.0-alpha.0",
   "description": "Connect Botkit or BotBuilder to Webex Teams",
   "main": "./lib/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "botbuilder-adapter-hangouts",
+  "name": "@wearekadence/botbuilder-adapter-hangouts",
   "version": "1.1.0-alpha.0",
   "description": "Connect Botkit or BotBuilder to Google Hangouts",
   "main": "./lib/index.js",
