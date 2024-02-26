@@ -1,6 +1,6 @@
 {
   "name": "@wearekadence/botkit-plugin-cms",
-  "version": "1.1.0-alpha.1",
+  "version": "1.1.0-alpha.2",
   "description": "Extend Botkit with access to botkit-cms",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
