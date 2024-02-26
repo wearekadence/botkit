@@ -22,7 +22,7 @@ export class BotkitDialogWrapper {
      */
     public vars: {
         [key: string]: any;
-    }
+    };
 
     public constructor(dc: DialogContext, step: BotkitConversationStep) {
         this.dc = dc;

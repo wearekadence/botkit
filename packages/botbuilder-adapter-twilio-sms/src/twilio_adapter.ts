@@ -13,6 +13,35 @@ import { TwilioBotWorker } from './botworker';
 const debug = Debug('botkit:twilio');
 
 /**
+ * Parameters passed to the TwilioAdapter constructor.
+ */
+export interface TwilioAdapterOptions {
+    /**
+     * The phone number associated with this Twilio app, in the format 1XXXYYYZZZZ
+     */
+    twilio_number: string;
+    /**
+     * The account SID from the twilio account
+     */
+    account_sid: string;
+    /**
+     * An api auth token associated with the twilio account
+     */
+    auth_token: string;
+    /**
+     * An optional url to override the automatically generated url signature used to validate incoming requests -- [See Twilio docs about securing your endpoint.](https://www.twilio.com/docs/usage/security#validating-requests)
+     */
+    validation_url?: string;
+    /**
+     * Allow the adapter to startup without a complete configuration.
+     * This is risky as it may result in a non-functioning or insecure adapter.
+     * This should only be used when getting started.
+     */
+    enable_incomplete?: boolean;
+
+}
+
+/**
  * Connect [Botkit](https://www.npmjs.com/package/botkit) or [BotBuilder](https://www.npmjs.com/package/botbuilder) to Twilio's SMS service.
  */
 export class TwilioAdapter extends BotAdapter {
@@ -301,33 +330,4 @@ export class TwilioAdapter extends BotAdapter {
             return false;
         }
     }
-}
-
-/**
- * Parameters passed to the TwilioAdapter constructor.
- */
-export interface TwilioAdapterOptions {
-    /**
-     * The phone number associated with this Twilio app, in the format 1XXXYYYZZZZ
-     */
-    twilio_number: string;
-    /**
-     * The account SID from the twilio account
-     */
-    account_sid: string;
-    /**
-     * An api auth token associated with the twilio account
-     */
-    auth_token: string;
-    /**
-     * An optional url to override the automatically generated url signature used to validate incoming requests -- [See Twilio docs about securing your endpoint.](https://www.twilio.com/docs/usage/security#validating-requests)
-     */
-    validation_url?: string;
-    /**
-     * Allow the adapter to startup without a complete configuration.
-     * This is risky as it may result in a non-functioning or insecure adapter.
-     * This should only be used when getting started.
-     */
-    enable_incomplete?: boolean;
-
 }

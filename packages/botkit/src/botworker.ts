@@ -107,7 +107,7 @@ export class BotWorker {
                 resolve(await this.getConfig('context').sendActivity(activity));
             });
         });
-    };
+    }
 
     /**
      * Reply to an incoming message.

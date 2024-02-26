@@ -14,6 +14,32 @@ const debug = Debug('botkit:hangouts');
 
 const apiVersion = 'v1';
 
+export interface HangoutsAdapterOptions {
+    /**
+     * Parameters passed to the [Google API client library](https://www.npmjs.com/package/googleapis) which is in turn used to send messages.
+     * Define credentials per [the GoogleAuthOptions defined here](https://github.com/googleapis/google-auth-library-nodejs/blob/master/src/auth/googleauth.ts#L54),
+     * OR, specify GOOGLE_APPLICATION_CREDENTIALS in environment [as described in the Google docs](https://cloud.google.com/docs/authentication/getting-started).
+     */
+    google_auth_params?: {
+        client_email?: string;
+        private_key?: string;
+    };
+    /**
+     * Shared secret token used to validate the origin of incoming webhooks.
+     * Get this from the [Google API console for your bot app](https://console.cloud.google.com/apis/api/chat.googleapis.com/hangouts-chat) - it is found on the Configuration tab under the heading "Verification Token".
+     * If defined, the origin of all incoming webhooks will be validated and any non-matching requests will be rejected.
+     */
+    token: string; // webhook validation token
+
+    /**
+     * Allow the adapter to startup without a complete configuration.
+     * This is risky as it may result in a non-functioning or insecure adapter.
+     * This should only be used when getting started.
+     */
+    enable_incomplete?: boolean;
+
+}
+
 /**
  * Connect [Botkit](https://www.npmjs.com/package/botkit) or [BotBuilder](https://www.npmjs.com/package/botbuilder) to Google Hangouts
  *
@@ -355,30 +381,4 @@ export class HangoutsAdapter extends BotAdapter {
             }
         }
     }
-}
-
-export interface HangoutsAdapterOptions {
-    /**
-     * Parameters passed to the [Google API client library](https://www.npmjs.com/package/googleapis) which is in turn used to send messages.
-     * Define credentials per [the GoogleAuthOptions defined here](https://github.com/googleapis/google-auth-library-nodejs/blob/master/src/auth/googleauth.ts#L54),
-     * OR, specify GOOGLE_APPLICATION_CREDENTIALS in environment [as described in the Google docs](https://cloud.google.com/docs/authentication/getting-started).
-     */
-    google_auth_params?: {
-        client_email?: string;
-        private_key?: string;
-    };
-    /**
-     * Shared secret token used to validate the origin of incoming webhooks.
-     * Get this from the [Google API console for your bot app](https://console.cloud.google.com/apis/api/chat.googleapis.com/hangouts-chat) - it is found on the Configuration tab under the heading "Verification Token".
-     * If defined, the origin of all incoming webhooks will be validated and any non-matching requests will be rejected.
-     */
-    token: string; // webhook validation token
-
-    /**
-     * Allow the adapter to startup without a complete configuration.
-     * This is risky as it may result in a non-functioning or insecure adapter.
-     * This should only be used when getting started.
-     */
-    enable_incomplete?: boolean;
-
 }
