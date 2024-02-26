@@ -1,6 +1,6 @@
 {
   "name": "botkit",
-  "version": "4.15.0",
+  "version": "4.16.0-alpha.0",
   "description": "Building Blocks for Building Bots",
   "main": "lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -53,5 +53,5 @@
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0"
-}
+  }
 }
