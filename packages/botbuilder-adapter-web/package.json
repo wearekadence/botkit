@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "botkit": "^4.15.0",
-    "botbuilder": "^4.15.0",
+    "botbuilder": "^4.22.1",
     "debug": "^4.1.0",
     "url": "^0.11.0",
     "ws": "^7.3.1"

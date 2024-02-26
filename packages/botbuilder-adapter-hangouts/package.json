@@ -35,7 +35,7 @@
     "url": "https://github.com/howdyai/botkit.git"
   },
   "dependencies": {
-    "botbuilder": "^4.15.0",
+    "botbuilder": "^4.22.1",
     "googleapis": "^92.0.0",
     "botkit": "^4.15.0",
     "debug": "^4.1.0"
