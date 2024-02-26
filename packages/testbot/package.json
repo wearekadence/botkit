@@ -1,6 +1,6 @@
 {
   "name": "@wearekadence/testbot",
-  "version": "1.1.0-alpha.2",
+  "version": "1.1.0-alpha.3",
   "description": "a test harness for testing in-progress changes to botkit",
   "main": "bot.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "@wearekadence/botbuilder-adapter-facebook": "^1.1.0-alpha.2",
     "@wearekadence/botbuilder-adapter-hangouts": "^1.1.0-alpha.2",
-    "@wearekadence/botbuilder-adapter-slack": "^1.1.0-alpha.3",
+    "@wearekadence/botbuilder-adapter-slack": "^1.1.0-alpha.4",
     "@wearekadence/botbuilder-adapter-twilio-sms": "^1.1.0-alpha.2",
     "@wearekadence/botbuilder-adapter-web": "^1.1.0-alpha.0",
     "@wearekadence/botbuilder-adapter-webex": "^1.1.0-alpha.2",
