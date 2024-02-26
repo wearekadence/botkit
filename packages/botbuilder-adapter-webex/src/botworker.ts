@@ -6,7 +6,7 @@
  * Licensed under the MIT License.
  */
 
-import { BotWorker, BotkitMessage } from 'botkit';
+import { BotWorker, BotkitMessage } from '@wearekadence/botkit';
 import * as Webex from 'webex';
 
 /**

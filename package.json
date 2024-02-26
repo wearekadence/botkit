@@ -11,6 +11,7 @@
     "lerna:pack": "lerna run pack"
   },
   "devDependencies": {
+    "@types/node": "^20.11.20",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "eslint": "^8.34.0",

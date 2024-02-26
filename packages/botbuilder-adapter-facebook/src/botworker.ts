@@ -6,7 +6,7 @@
  * Licensed under the MIT License.
  */
 
-import { Botkit, BotWorker } from 'botkit';
+import { Botkit, BotWorker } from '@wearekadence/botkit';
 import { FacebookAPI } from './facebook_api';
 import { ConversationAccount, ConversationReference } from 'botbuilder';
 

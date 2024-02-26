@@ -6,7 +6,7 @@
  * Licensed under the MIT License.
  */
 
-import { Botkit, BotkitMessage, BotWorker } from 'botkit';
+import { Botkit, BotkitMessage, BotWorker } from '@wearekadence/botkit';
 import { WebClient, Dialog } from '@slack/web-api';
 import fetch from 'cross-fetch';
 

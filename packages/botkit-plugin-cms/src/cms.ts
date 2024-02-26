@@ -6,7 +6,7 @@
  * Licensed under the MIT License.
  */
 
-import { Botkit, BotkitDialogWrapper, BotkitMessage, BotWorker, BotkitConversation } from 'botkit';
+import { Botkit, BotkitDialogWrapper, BotkitMessage, BotWorker, BotkitConversation } from '@wearekadence/botkit';
 import fetch from 'cross-fetch';
 import * as Debug from 'debug';
 import * as url from 'url';

@@ -6,7 +6,7 @@
  * Licensed under the MIT License.
  */
 
-import { BotWorker, BotkitMessage } from 'botkit';
+import { BotWorker, BotkitMessage } from '@wearekadence/botkit';
 
 /**
  * This is a specialized version of [Botkit's core BotWorker class](#BotWorker) that includes additional methods for interacting with Google Hangouts.

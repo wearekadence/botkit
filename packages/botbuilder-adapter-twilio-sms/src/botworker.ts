@@ -6,7 +6,7 @@
  * Licensed under the MIT License.
  */
 
-import { BotWorker } from 'botkit';
+import { BotWorker } from '@wearekadence/botkit';
 import * as Twilio from 'twilio';
 import { ConversationAccount, ChannelAccount } from 'botbuilder';
 
