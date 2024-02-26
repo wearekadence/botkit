@@ -1,5 +1,5 @@
 {
-  "name": "generator-botkit",
+  "name": "@wearekadence/generator-botkit",
   "version": "4.16.0-alpha.0",
   "description": "Automatically generate a Botkit application template for any supported platform",
   "scripts": {

@@ -1,5 +1,5 @@
 {
-  "name": "botkit-docs",
+  "name": "@wearekadence/botkit-docs",
   "version": "1.1.0-alpha.0",
   "description": "Documentation for Botkit 4.x",
   "scripts": {
