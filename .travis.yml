@@ -2,6 +2,6 @@ language: node_js
 node_js:
 - lts/*
 script:
-- lerna bootstrap --hoist
+- npm install
 - lerna run build
 - lerna run test

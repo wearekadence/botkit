@@ -7,7 +7,7 @@
  */
 
 import { Activity, ActivityTypes, BotAdapter, TurnContext, ConversationReference, ResourceResponse, ConversationAccount } from 'botbuilder';
-import * as Debug from 'debug';
+import Debug from 'debug';
 import { FacebookBotWorker } from './botworker';
 import { FacebookAPI } from './facebook_api';
 import * as crypto from 'crypto';

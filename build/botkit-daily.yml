@@ -106,7 +106,6 @@ steps:
     targetType: 'inline'
     script: |
       npm install --ignore-scripts
-      lerna bootstrap --hoist
       lerna run build
       lerna run pack
   displayName: 'Build packages'

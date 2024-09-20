@@ -10,7 +10,7 @@ import { Activity, ActivityTypes, BotAdapter, TurnContext, ConversationReference
 import { WebClient, WebAPICallResult } from '@slack/web-api';
 import { SlackBotWorker } from './botworker';
 import * as crypto from 'crypto';
-import * as Debug from 'debug';
+import Debug from 'debug';
 const debug = Debug('botkit:slack');
 
 /**

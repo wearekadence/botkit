@@ -1,19 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
     "declaration": true,
     "sourceMap": true,
     "outDir": "./lib",
     "rootDir": "./src",
     "types" : ["node"],
     "lib": [
-      "es5",
-      "es2015",
-      "es2016.array.include",
-      "esnext.asynciterable",
+      "es2022", 
       "dom"
-    ]
+    ],
+    "module": "Node16",
+    "target": "es2022",
+    "moduleResolution": "node16"
   },
   "include": [
     "src/**/*"

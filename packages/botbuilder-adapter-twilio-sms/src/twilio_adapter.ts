@@ -7,8 +7,8 @@
  */
 
 import { Activity, ActivityTypes, BotAdapter, TurnContext, ConversationReference, ResourceResponse } from 'botbuilder';
-import * as Debug from 'debug';
-import * as Twilio from 'twilio';
+import Debug from 'debug';
+import Twilio from 'twilio';
 import { TwilioBotWorker } from './botworker';
 const debug = Debug('botkit:twilio');
 

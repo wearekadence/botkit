@@ -8,7 +8,7 @@
 
 import { Botkit, BotkitDialogWrapper, BotkitMessage, BotWorker, BotkitConversation } from '@wearekadence/botkit';
 import fetch from 'cross-fetch';
-import * as Debug from 'debug';
+import Debug from 'debug';
 import * as url from 'url';
 
 const debug = Debug('botkit:cms');

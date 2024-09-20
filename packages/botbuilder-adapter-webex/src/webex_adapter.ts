@@ -11,7 +11,7 @@ import { WebexBotWorker } from './botworker';
 import * as Webex from 'webex';
 import * as url from 'url';
 import * as crypto from 'crypto';
-import * as Debug from 'debug';
+import Debug from 'debug';
 const debug = Debug('botkit:webex');
 
 export interface WebexAdapterOptions {

@@ -11,7 +11,7 @@ import { BotkitDialogWrapper } from './dialogWrapper';
 import { Activity, ActivityTypes, TurnContext, MessageFactory, ActionTypes } from 'botbuilder';
 import { Dialog, DialogContext, DialogReason, PromptValidatorContext, ActivityPrompt, DialogTurnStatus } from 'botbuilder-dialogs';
 import * as mustache from 'mustache';
-import * as Debug from 'debug';
+import Debug from 'debug';
 
 const debug = Debug('botkit:conversation');
 

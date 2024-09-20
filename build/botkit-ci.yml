@@ -76,8 +76,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      npm install --ignore-scripts
-      lerna bootstrap --hoist
+      npm install
       lerna run build
       lerna run pack
   displayName: 'Build packages'

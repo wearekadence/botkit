@@ -7,7 +7,7 @@
  */
 
 import { Activity, ActivityTypes, BotAdapter, TurnContext, ConversationReference, ResourceResponse } from 'botbuilder';
-import * as Debug from 'debug';
+import Debug from 'debug';
 import { google } from 'googleapis';
 import { HangoutsBotWorker } from './botworker';
 const debug = Debug('botkit:hangouts');

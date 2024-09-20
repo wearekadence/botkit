@@ -7,7 +7,7 @@
  */
 
 import { Activity, ActivityTypes, BotAdapter, ConversationReference, TurnContext, ResourceResponse } from 'botbuilder';
-import * as Debug from 'debug';
+import Debug from 'debug';
 import * as WebSocket from 'ws';
 const debug = Debug('botkit:web');
 

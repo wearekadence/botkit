@@ -26,5 +26,7 @@
     "dotenv": "^6.2.0",
     "express-basic-auth": "^1.1.6",
     "restify": "^8.4.0"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }

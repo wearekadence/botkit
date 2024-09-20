@@ -12,11 +12,11 @@ import { BotWorker } from './botworker';
 import { BotkitConversationState } from './conversationState';
 import * as path from 'path';
 import * as http from 'http';
-import * as express from 'express';
+import Express from 'express';
 import * as bodyParser from 'body-parser';
-import * as Ware from 'ware';
+import Ware from 'ware';
 import * as fs from 'fs';
-import * as Debug from 'debug';
+import Debug from 'debug';
 
 const debug = Debug('botkit');
 
@@ -373,7 +373,7 @@ export class Botkit {
                 // Create HTTP server
                 this.addDep('webserver');
 
-                this.webserver = express();
+                this.webserver = Express();
 
                 // capture raw body
                 this.webserver.use((req, res, next) => {
@@ -588,7 +588,7 @@ export class Botkit {
     public publicFolder(alias, path): void {
         if (this.webserver) {
             debug('Make folder public: ', path, 'at alias', alias);
-            this.webserver.use(alias, express.static(path));
+            this.webserver.use(alias, Express.static(path));
         } else {
             throw new Error('Cannot create public folder alias when webserver is disabled');
         }
