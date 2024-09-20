@@ -1,6 +1,6 @@
 {
   "name": "@wearekadence/testbot",
-  "version": "1.1.0-alpha.4",
+  "version": "1.2.0-alpha.0",
   "description": "a test harness for testing in-progress changes to botkit",
   "main": "bot.js",
   "scripts": {
@@ -9,14 +9,14 @@
   "author": "benbrown@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "@wearekadence/botbuilder-adapter-facebook": "^1.1.0-alpha.3",
-    "@wearekadence/botbuilder-adapter-hangouts": "^1.1.0-alpha.3",
-    "@wearekadence/botbuilder-adapter-slack": "^1.1.0-alpha.5",
-    "@wearekadence/botbuilder-adapter-twilio-sms": "^1.1.0-alpha.3",
-    "@wearekadence/botbuilder-adapter-web": "^1.1.0-alpha.2",
-    "@wearekadence/botbuilder-adapter-webex": "^1.1.0-alpha.3",
-    "@wearekadence/botkit": "^4.16.0-alpha.3",
-    "@wearekadence/botkit-plugin-cms": "^1.1.0-alpha.3",
+    "@wearekadence/botbuilder-adapter-facebook": "^1.2.0-alpha.0",
+    "@wearekadence/botbuilder-adapter-hangouts": "^1.2.0-alpha.0",
+    "@wearekadence/botbuilder-adapter-slack": "^1.2.0-alpha.0",
+    "@wearekadence/botbuilder-adapter-twilio-sms": "^1.2.0-alpha.0",
+    "@wearekadence/botbuilder-adapter-web": "^1.2.0-alpha.0",
+    "@wearekadence/botbuilder-adapter-webex": "^1.2.0-alpha.0",
+    "@wearekadence/botkit": "^4.17.0-alpha.0",
+    "@wearekadence/botkit-plugin-cms": "^1.2.0-alpha.0",
     "botbuilder": "^4.22.1",
     "botbuilder-ai": "^4.22.1",
     "botbuilder-dialogs": "^4.22.1",
@@ -27,6 +27,5 @@
     "express-basic-auth": "^1.1.6",
     "restify": "^8.4.0"
   },
-  "devDependencies": {},
   "keywords": []
 }
