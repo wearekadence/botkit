@@ -29,7 +29,6 @@
     "packages/botbuilder-adapter-slack",
     "packages/botbuilder-adapter-twilio-sms",
     "packages/botbuilder-adapter-web",
-    "packages/botbuilder-adapter-webex",
     "packages/docs",
     "packages/generator-botkit",
     "packages/testbot"

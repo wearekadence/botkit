@@ -41,7 +41,7 @@
     "@wearekadence/botkit": "^4.17.1-alpha.0",
     "botbuilder": "^4.22.1",
     "debug": "^4.1.0",
-    "twilio": "^3.29.2"
+    "twilio": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "^8.34.0",
