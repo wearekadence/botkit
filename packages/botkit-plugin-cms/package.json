@@ -1,6 +1,6 @@
 {
   "name": "@wearekadence/botkit-plugin-cms",
-  "version": "1.2.2-alpha.0",
+  "version": "1.2.3-alpha.0",
   "description": "Extend Botkit with access to botkit-cms",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -28,7 +28,7 @@
     "url": "git+https://github.com/howdyai/botkit.git"
   },
   "dependencies": {
-    "@wearekadence/botkit": "^4.17.2-alpha.0",
+    "@wearekadence/botkit": "^4.17.3-alpha.0",
     "cross-fetch": "^3.1.5",
     "debug": "^4.1.0"
   },
