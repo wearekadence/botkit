@@ -25,7 +25,7 @@
     "url": "git+https://github.com/howdyai/botkit.git"
   },
   "dependencies": {
-    "underscore": "1.13.1",
+    "underscore": "1.13.8",
     "yeoman-generator": "5.6.1"
   },
   "main": "index.js"
