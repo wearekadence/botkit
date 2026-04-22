@@ -15,13 +15,6 @@
       "interfaces": []
     },
     {
-      "name": "Botkit for Webex Teams",
-      "packageName": "WebexAdapter",
-      "path": "reference/webex.md",
-      "classes": [],
-      "interfaces": []
-    },
-    {
       "name": "Botkit for Slack",
       "packageName": "SlackAdapter",
       "path": "reference/slack.md",
@@ -61,10 +54,6 @@
     {
       "name": "Websocket and Webhooks",
       "path": "platforms/web.md"
-    },
-    {
-      "name": "Webex Teams",
-      "path": "platforms/webex.md"
     },
     {
       "name": "Slack",

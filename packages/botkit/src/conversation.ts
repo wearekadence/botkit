@@ -113,7 +113,7 @@ interface EmptyObject {}
  * })
  * ```
  */
-export class BotkitConversation<O extends EmptyObject = {}> extends Dialog<O> {
+export class BotkitConversation<O extends EmptyObject = EmptyObject> extends Dialog<O> {
     /**
      * A map of every message in the dialog, broken into threads
      */

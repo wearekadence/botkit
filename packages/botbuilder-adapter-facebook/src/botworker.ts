@@ -8,7 +8,7 @@
 
 import { Botkit, BotWorker } from '@wearekadence/botkit';
 import { FacebookAPI } from './facebook_api';
-import { ConversationAccount, ConversationReference } from 'botbuilder';
+import { ConversationReference } from 'botbuilder';
 
 /**
  * This is a specialized version of [Botkit's core BotWorker class](core.md#BotWorker) that includes additional methods for interacting with Facebook.

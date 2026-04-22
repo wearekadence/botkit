@@ -1,6 +1,5 @@
 // const { FacebookAdapter } = require('botbuilder-adapter-facebook');
 // const { SlackAdapter, SlackMessageTypeMiddleware, SlackIdentifyBotsMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack');
-// const { WebexAdapter } = require('botbuilder-adapter-webex');
 // const { HangoutsAdapter } = require('botbuilder-adapter-hangouts');
 // const { TwilioAdapter } = require('botbuilder-adapter-twilio-sms');
 
@@ -27,12 +26,6 @@ const adapter = new BotFrameworkAdapter({
 //     clientSigningSecret: process.env.clientSigningSecret,  
 //     botToken: process.env.botToken,
 // });
-
-// const adapter = new WebexAdapter({
-//     access_token: process.env.WEBEX_ACCESS_TOKEN,
-//     public_address: process.env.WEBEX_PUBLIC_ADDRESS,
-//     secret: 'random-secret-1234',
-// })
 
 // const adapter = new HangoutsAdapter({
 //     token: process.env.GOOGLE_TOKEN,

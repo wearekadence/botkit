@@ -19,8 +19,6 @@
     "botbuilder": "^4.22.1",
     "botbuilder-ai": "^4.22.1",
     "botbuilder-dialogs": "^4.22.1",
-    "botbuilder-dialogs-botkit-cms": "0.0.1",
-    "botbuilder-storage-mongodb": "^0.9.5",
     "cross-fetch": "^3.1.5",
     "dotenv": "^6.2.0",
     "express-basic-auth": "^1.1.6",
