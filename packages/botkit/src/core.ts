@@ -176,6 +176,7 @@ export interface BotkitPlugin {
     middlewares?: {
         [key: string]: any[];
     };
+    // eslint-disable-next-line no-use-before-define
     init?: (botkit: Botkit) => void;
     [key: string]: any; // allow arbitrary additional fields to be added.
 }
@@ -238,6 +239,7 @@ export class Botkit {
     /**
      * The current version of Botkit Core
      */
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     public version: string = require('../package.json').version;
 
     /**

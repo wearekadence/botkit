@@ -1,9 +1,7 @@
 const { Botkit } = require('botkit');
-const { MongoDbStorage } = require('botbuilder-storage-mongodb');
 const { BotkitCMSHelper } = require('botkit-plugin-cms');
 
 const { SlackAdapter, SlackMessageTypeMiddleware, SlackIdentifyBotsMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack');
-// const { WebexAdapter } = require('botbuilder-adapter-webex');
 const { WebAdapter } = require('botbuilder-adapter-web');
 // const { FacebookAdapter, FacebookEventTypeMiddleware } = require('botbuilder-adapter-facebook');
 // const { HangoutsAdapter } = require('botbuilder-adapter-hangouts');
@@ -12,31 +10,6 @@ const { WebAdapter } = require('botbuilder-adapter-web');
 
 // Load process.env values from .env file
 require('dotenv').config();
-
-let storage = null;
-if (process.env.MONGO_URI) {
-    storage = mongoStorage = new MongoDbStorage({
-        url : process.env.MONGO_URI,
-        // database: "botframework",
-        // collection: "botframework"
-    });
-}
-
-/* ----------------------------------------------------------------------
- * .-.   .-.      .-.
- * : :.-.: :      : :
- * : :: :: : .--. : `-.  .--. .-.,-.
- * : `' `' ;' '_.'' .; :' '_.'`.  .'
- *  `.,`.,' `.__.'`.__.'`.__.':_,._;
- * Configure the Webex Teams adapter
- * ----------------------------------------------------------------------
- */
-// const adapter = new WebexAdapter({
-//     enable_incomplete: true,
-//     // access_token: process.env.WEBEX_ACCESS_TOKEN,
-//     // public_address: process.env.WEBEX_PUBLIC_ADDRESS,
-//     secret: 'random-secret-1234',
-// })
 
 /* ----------------------------------------------------------------------
  *  .--. .-.               .-.
@@ -150,8 +123,7 @@ const controller = new Botkit({
     // adapterConfig: {
     //     appId: process.env.APP_ID,
     //     appPassword: process.env.APP_PASSWORD
-    // },
-    storage
+    // }
 });
 
 // const cms = new BotkitCMSHelper({
